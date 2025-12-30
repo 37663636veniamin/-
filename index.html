@@ -7,20 +7,21 @@
 <style>
   body {
     margin: 0;
-    background: #0a0a0a; /* Можно поменять на любой фон */
-    overflow: hidden;
+    background: #0a0a0a; /* фон страницы, можно поменять */
+    overflow: hidden;     /* чтобы не появлялись полосы прокрутки */
   }
 
   .snowflake {
-    position: absolute;
-    top: -10px;
+    position: fixed;           /* фиксируем на экране */
+    top: -10px;                /* старт чуть выше верхнего края */
     color: white;
     font-size: 20px;
-    user-select: none;
-    pointer-events: none;
+    user-select: none;         /* нельзя выделять */
+    pointer-events: none;      /* не мешает кликам */
     animation-name: fall;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
+    z-index: 9999;             /* всегда поверх всего */
   }
 
   @keyframes fall {
@@ -37,10 +38,10 @@
     const snow = document.createElement('div');
     snow.className = 'snowflake';
     snow.textContent = '❄'; // символ снежинки
-    snow.style.left = Math.random() * window.innerWidth + 'px';
-    snow.style.fontSize = 10 + Math.random()*20 + 'px';
-    snow.style.animationDuration = 5 + Math.random()*5 + 's';
-    snow.style.opacity = 0.5 + Math.random()*0.5;
+    snow.style.left = Math.random() * window.innerWidth + 'px';      // случайное X
+    snow.style.fontSize = 10 + Math.random()*20 + 'px';             // случайный размер
+    snow.style.animationDuration = 5 + Math.random()*5 + 's';       // случайная скорость
+    snow.style.opacity = 0.5 + Math.random()*0.5;                   // прозрачность
     document.body.appendChild(snow);
   }
 </script>

@@ -2,26 +2,27 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
-<title>Snow</title>
+<title>Snow on Image</title>
 
 <style>
   body {
     margin: 0;
-    background: #0a0a0a; /* фон страницы, можно поменять */
-    overflow: hidden;     /* чтобы не появлялись полосы прокрутки */
+    background: url('background.jpg') no-repeat center center fixed; /* твоя картинка */
+    background-size: cover; /* растянуть на весь экран */
+    overflow: hidden;        /* убрать полосы прокрутки */
   }
 
   .snowflake {
-    position: fixed;           /* фиксируем на экране */
-    top: -10px;                /* старт чуть выше верхнего края */
-    color: white;
+    position: fixed;          /* фиксируем на экране */
+    top: -10px;               /* старт чуть выше верхнего края */
+    color: white;             /* цвет снежинок */
     font-size: 20px;
-    user-select: none;         /* нельзя выделять */
-    pointer-events: none;      /* не мешает кликам */
+    user-select: none;        /* нельзя выделять */
+    pointer-events: none;     /* не мешают кликам */
     animation-name: fall;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
-    z-index: 9999;             /* всегда поверх всего */
+    z-index: 9999;            /* всегда поверх всего */
   }
 
   @keyframes fall {
@@ -38,40 +39,13 @@
     const snow = document.createElement('div');
     snow.className = 'snowflake';
     snow.textContent = '❄'; // символ снежинки
-    snow.style.left = Math.random() * window.innerWidth + 'px';      // случайное X
-    snow.style.fontSize = 10 + Math.random()*20 + 'px';             // случайный размер
-    snow.style.animationDuration = 5 + Math.random()*5 + 's';       // случайная скорость
-    snow.style.opacity = 0.5 + Math.random()*0.5;                   // прозрачность
+    snow.style.left = Math.random() * window.innerWidth + 'px';   // случайное X
+    snow.style.fontSize = 10 + Math.random()*20 + 'px';          // случайный размер
+    snow.style.animationDuration = 5 + Math.random()*5 + 's';    // случайная скорость
+    snow.style.opacity = 0.5 + Math.random()*0.5;                // прозрачность
     document.body.appendChild(snow);
   }
 </script>
 
 </body>
 </html>
-
-<style>
-  body {
-    margin: 0;
-    background: url('background.jpg') no-repeat center center fixed;
-    background-size: cover; /* чтобы картинка растянулась на весь экран */
-    overflow: hidden;
-  }
-
-  .snowflake {
-    position: fixed;
-    top: -10px;
-    color: white;
-    font-size: 20px;
-    user-select: none;
-    pointer-events: none;
-    animation-name: fall;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    z-index: 9999;
-  }
-
-  @keyframes fall {
-    0% { transform: translateY(0) rotate(0deg); }
-    100% { transform: translateY(100vh) rotate(360deg); }
-  }
-</style>
